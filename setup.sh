@@ -55,21 +55,21 @@ else
   fi
 fi
 
-# Install Claude Code CLI
+# Check for Claude Code CLI
 echo ""
-echo "Installing Claude Code CLI..."
-npm install -g @anthropic-ai/claude-code
-echo -e "${GREEN}Claude Code installed.${NC}"
-
-# Verify
-echo ""
-echo "Verifying installation..."
-if ! command -v claude &>/dev/null; then
-  echo -e "${RED}Error: Claude Code could not be verified. Try running 'npm install -g @anthropic-ai/claude-code' manually.${NC}"
-  exit 1
+echo "Checking for Claude Code..."
+if command -v claude &>/dev/null; then
+  CLAUDE_VERSION=$(claude --version 2>&1 | head -1)
+  echo -e "${GREEN}Claude Code already installed — OK${NC}"
+else
+  echo -e "${YELLOW}Claude Code not found. Installing...${NC}"
+  npm install -g @anthropic-ai/claude-code
+  if ! command -v claude &>/dev/null; then
+    echo -e "${RED}Error: Claude Code could not be verified. Try running 'npm install -g @anthropic-ai/claude-code' manually.${NC}"
+    exit 1
+  fi
+  echo -e "${GREEN}Claude Code installed.${NC}"
 fi
-CLAUDE_VERSION=$(claude --version 2>&1 | head -1)
-echo -e "${GREEN}$CLAUDE_VERSION — OK${NC}"
 
 echo ""
 echo "================================================"
