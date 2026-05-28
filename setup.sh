@@ -58,13 +58,23 @@ fi
 # Check for Claude Code CLI
 echo ""
 echo "Checking for Claude Code..."
-if command -v claude &>/dev/null; then
-  CLAUDE_VERSION=$(claude --version 2>&1 | head -1)
+CLAUDE_BIN=$(command -v claude 2>/dev/null || echo "")
+if [ -z "$CLAUDE_BIN" ]; then
+  for p in /usr/local/bin/claude /opt/homebrew/bin/claude "$HOME/.npm-global/bin/claude"; do
+    if [ -f "$p" ]; then
+      CLAUDE_BIN="$p"
+      break
+    fi
+  done
+fi
+
+if [ -n "$CLAUDE_BIN" ]; then
   echo -e "${GREEN}Claude Code already installed — OK${NC}"
 else
   echo -e "${YELLOW}Claude Code not found. Installing...${NC}"
   npm install -g @anthropic-ai/claude-code
-  if ! command -v claude &>/dev/null; then
+  CLAUDE_BIN=$(command -v claude 2>/dev/null || echo "")
+  if [ -z "$CLAUDE_BIN" ]; then
     echo -e "${RED}Error: Claude Code could not be verified. Try running 'npm install -g @anthropic-ai/claude-code' manually.${NC}"
     exit 1
   fi
