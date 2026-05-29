@@ -99,6 +99,8 @@ else
     exit 1
   fi
   echo -e "${GREEN}Claude Code installed.${NC}"
+  echo ""
+  echo -e "${YELLOW}Action required: close this Terminal window and open a new one before continuing.${NC}"
 fi
 
 echo ""
