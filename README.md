@@ -49,13 +49,13 @@ A browser window will open. Sign in with your work Claude account. Once signed i
 
 ## Step 4: Connect Figma
 
-> **Important:** There are two different Figma integrations available. You need the one provided by **claude.ai** (under the Web section in Connectors), not Figma's own desktop plugin. The claude.ai version has significantly more tools including write access.
+In Terminal, run:
 
-1. Go to [claude.ai](https://claude.ai) and sign in
-2. Click the **Customize** icon in the left sidebar
-3. Select **Connectors**
-4. Under the **Web** section, find **Figma** and click to connect it
-5. Follow the prompts to authorise the connection
+```bash
+curl -fsSL https://raw.githubusercontent.com/matt99is/claude-code-setup/main/figma-setup.sh -o /tmp/figma-setup.sh && bash /tmp/figma-setup.sh
+```
+
+The script will ask you to generate a Figma access token and guide you through the steps. Once you paste your token and press Enter, Figma will be connected automatically.
 
 ---
 
@@ -77,4 +77,4 @@ If Claude describes the file contents, everything is working correctly.
 
 **`claude` command not found after the script** — close Terminal, open a new Terminal window, and try again.
 
-**Figma is not responding** — check that you selected all scopes when generating the token. You can generate a new token in Figma and update it in claude.ai Connected Apps.
+**Figma is not responding** — check that you selected all scopes when generating the token. Run the figma-setup.sh script again with a new token to update it.
