@@ -49,26 +49,11 @@ A browser window will open. Sign in with your work Claude account. Once signed i
 
 ## Step 4: Connect Figma
 
-**In Figma:**
-
-1. Click your profile picture in the top-left corner
-2. Go to **Settings**
-3. Select the **Security** tab
-4. Under **Personal access tokens**, click **Generate new token**
-5. Give it a name (for example: `Claude Code`)
-6. Select **all available scopes** — this gives Claude full read and write access
-7. Set the expiry to **No expiration** or a date far in the future
-8. Click **Generate token**
-9. Copy the token immediately — it will not be shown again
-
-**In claude.ai:**
-
 1. Go to [claude.ai](https://claude.ai) and sign in
-2. Click your profile picture and go to **Settings**
-3. Select **Connected Apps**
-4. Find **Figma** and click to add it
-5. Paste the token you copied from Figma
-6. Save
+2. Click the **Customize** icon in the left sidebar
+3. Select **Connectors**
+4. Find **Figma** and click to connect it
+5. A Figma login window will open — sign in and authorise the connection
 
 ---
 
