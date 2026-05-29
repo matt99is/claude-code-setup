@@ -15,7 +15,7 @@ Open **Terminal** (press `Cmd + Space`, type `Terminal`, press `Enter`).
 Paste this command and press `Enter`:
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/matt99is/claude-code-setup/main/setup.sh | bash
+curl -fsSL https://raw.githubusercontent.com/matt99is/claude-code-setup/main/setup.sh -o /tmp/claude-setup.sh && bash /tmp/claude-setup.sh
 ```
 
 The script will install everything needed. You will see progress messages as it runs. When you see **Setup complete!** you are ready for Step 2.
@@ -83,6 +83,8 @@ If Claude describes the file contents, everything is working correctly.
 ## Troubleshooting
 
 **The script failed** — copy the error message and send it to Matt.
+
+**"Need sudo access" or "needs to be an Administrator"** — your Mac account needs admin rights to install Homebrew. Ask your IT team to either grant you admin access or install Homebrew for you before running this script again.
 
 **`claude` command not found after the script** — close Terminal, open a new Terminal window, and try again.
 
