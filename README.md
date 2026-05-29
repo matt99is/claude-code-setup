@@ -49,11 +49,13 @@ A browser window will open. Sign in with your work Claude account. Once signed i
 
 ## Step 4: Connect Figma
 
+> **Important:** There are two different Figma integrations available. You need the one provided by **claude.ai** (under the Web section in Connectors), not Figma's own desktop plugin. The claude.ai version has significantly more tools including write access.
+
 1. Go to [claude.ai](https://claude.ai) and sign in
 2. Click the **Customize** icon in the left sidebar
 3. Select **Connectors**
-4. Find **Figma** and click to connect it
-5. A Figma login window will open — sign in and authorise the connection
+4. Under the **Web** section, find **Figma** and click to connect it
+5. Follow the prompts to authorise the connection
 
 ---
 
