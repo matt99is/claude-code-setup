@@ -72,8 +72,28 @@ if [ -n "$CLAUDE_BIN" ]; then
   echo -e "${GREEN}Claude Code already installed — OK${NC}"
 else
   echo -e "${YELLOW}Claude Code not found. Installing...${NC}"
+
+  # Fix npm permissions: if global prefix isn't user-writable, redirect to ~/.npm-global
+  NPM_PREFIX=$(npm config get prefix 2>/dev/null || echo "")
+  if [ -n "$NPM_PREFIX" ] && [ ! -w "$NPM_PREFIX" ]; then
+    echo -e "${YELLOW}npm global directory not writable. Configuring user-local prefix...${NC}"
+    mkdir -p "$HOME/.npm-global"
+    npm config set prefix "$HOME/.npm-global"
+    export PATH="$HOME/.npm-global/bin:$PATH"
+    PROFILE="$HOME/.zprofile"
+    if ! grep -q '.npm-global' "$PROFILE" 2>/dev/null; then
+      echo '' >> "$PROFILE"
+      echo 'export PATH="$HOME/.npm-global/bin:$PATH"' >> "$PROFILE"
+    fi
+  fi
+
   npm install -g @anthropic-ai/claude-code
   CLAUDE_BIN=$(command -v claude 2>/dev/null || echo "")
+  if [ -z "$CLAUDE_BIN" ]; then
+    for p in /usr/local/bin/claude /opt/homebrew/bin/claude "$HOME/.npm-global/bin/claude"; do
+      if [ -f "$p" ]; then CLAUDE_BIN="$p"; break; fi
+    done
+  fi
   if [ -z "$CLAUDE_BIN" ]; then
     echo -e "${RED}Error: Claude Code could not be verified. Try running 'npm install -g @anthropic-ai/claude-code' manually.${NC}"
     exit 1
