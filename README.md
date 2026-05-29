@@ -20,6 +20,8 @@ curl -fsSL https://raw.githubusercontent.com/matt99is/claude-code-setup/main/set
 
 The script will install everything needed. You will see progress messages as it runs. When you see **Setup complete!** you are ready for Step 2.
 
+If you see **"Action required: close this Terminal window and open a new one before continuing"** — do exactly that, then continue with Step 2 in the new window.
+
 If you see an error, copy the message and send it to Matt.
 
 ---
